@@ -1,0 +1,50 @@
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #ffffff; 
+}
+
+.landing-page { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; 
+}
+
+h1 { 
+    font-size: 5.5rem; 
+    font-weight: 700;
+    color: #ff0000; 
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.join-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 65px; 
+    background: transparent;
+    border: 1px solid #ff0000; 
+    border-radius: 4px;
+    color: #ff0000;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.join-btn:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "assessment",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "my",
+    "nyondo",
+    "project"
+  ],
+  "license": "ISC",
+  "author": "Nanyondo Sherinah Spellah",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon server.js"
+  },
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongoose": "^9.5.0",
+    "multer": "^2.1.1",
+    "passport": "^0.7.0",
+    "passport-local-mongoose": "^9.0.1",
+    "pug": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

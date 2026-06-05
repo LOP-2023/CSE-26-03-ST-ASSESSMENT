@@ -1,0 +1,192 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Upload your video
+    script(src='https://cdn.tailwindcss.com')
+    style.
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .custom-input {
+        border: 1px solid #D1D5DB;
+        color: #1F2937;
+        background-color: #ffffff !important;
+        transition: all 0.15s ease-in-out;
+      }
+      .custom-input::placeholder {
+        color: #9CA3AF;
+      }
+      
+
+      .input-error {
+        border: 2px solid #ef4444 !important;
+        background-color: #ffffff !important;
+      }
+      
+      .box-error-border {
+        border: 2px solid #ef4444 !important;
+      }
+
+  body(class="min-h-screen w-full flex items-center justify-center bg-gray-50 p-6")
+    
+    .w-full.max-w-5xl.bg-white.p-8.rounded-2xl.shadow-sm
+      h1.text-3xl.font-bold.text-black.mb-8.tracking-tight
+        | Upload video
+      
+      form.grid.grid-cols-1.gap-x-8.gap-y-5(
+        class='md:grid-cols-2'
+        id='uploadForm'
+        novalidate
+      )
+        .space-y-5.flex.flex-col.justify-between
+          div
+            input#title.w-full.px-4.custom-input.rounded-md.text-base(type='text' name='title' required='' placeholder='Video Title' class='py-3.5 focus:outline-none focus:border-gray-400')
+            p#title-error.text-red-500.text-xs.mt-1.font-medium.hidden Required field
+          
+          .flex-grow.flex.flex-col
+            textarea#description.w-full.h-full.px-4.custom-input.rounded-md.text-base.resize-none(name='description' required='' placeholder='Description' rows='7' class='py-3.5 focus:outline-none focus:border-gray-400')
+            p#description-error.text-red-500.text-xs.mt-1.font-medium.hidden Required field
+          
+          div
+            .relative
+              select#quality.w-full.px-4.custom-input.rounded-md.appearance-none.bg-white.text-base.text-gray-400(name='quality' required='' class='py-3.5 focus:outline-none focus:border-gray-400')
+                option(value='' disabled='' selected='' hidden='') Video quality
+                option.text-black(value='1080p') 1080p Full HD
+                option.text-black(value='4K') 4K Ultra HD
+                option.text-black(value='720p') 720p HD
+              .pointer-events-none.absolute.inset-y-0.right-4.flex.items-center.text-gray-400
+                svg.w-6.h-6(fill='none' stroke='currentColor' viewbox='0 0 24 24')
+                  path(stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19 9l-7 7-7-7')
+            p#quality-error.text-red-500.text-xs.mt-1.font-medium.hidden Required field
+          
+          div
+            .relative
+              input#publishDate.w-full.px-4.custom-input.rounded-md.text-base.text-gray-400.uppercase.tracking-wide(type='date' name='publishDate' required='' class='py-3.5 focus:outline-none focus:border-gray-400')
+              .pointer-events-none.absolute.inset-y-0.right-4.flex.items-center.text-gray-400
+                svg.w-6.h-6(fill='none' stroke='currentColor' viewbox='0 0 24 24' stroke-width='1.5')
+                  path(stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z')
+            p#publishDate-error.text-red-500.text-xs.mt-1.font-medium.hidden Required field
+        
+        .space-y-5.flex.flex-col.justify-between
+          div
+            label#videoBox.flex.flex-col.items-center.justify-center.rounded-xl.cursor-pointer.transition-colors.group.text-center.px-4.border(class='bg-[#D4D4D4] h-[210px] hover:bg-gray-300 border-transparent')
+              svg.w-16.h-16.text-gray-500.mb-2(fill='currentColor' viewbox='0 0 24 24')
+                path(d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z')
+              span#video-label.text-lg.font-medium.text-gray-500 Upload video
+              input.hidden(id='videoFile' type='file' name='videoFile' accept='video/*' required='')
+            p#videoFile-error.text-red-500.text-xs.mt-1.font-medium.hidden Required field
+          
+          div
+            label#thumbBox.flex.flex-col.items-center.justify-center.bg-white.rounded-xl.cursor-pointer.transition-colors.group.text-center.px-4.border-2.border-dashed.border-gray-300(class='h-[210px] hover:bg-gray-50')
+              svg.w-16.h-16.text-gray-400.mb-2(fill='none' stroke='currentColor' stroke-width='1.5' viewbox='0 0 24 24')
+                path(stroke-linecap='round' stroke-linejoin='round' d='M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z')
+              span#thumb-label.text-lg.font-medium.text-gray-400 Upload Thumbnail
+              input.hidden(id='thumbnailFile' type='file' name='thumbnailFile' accept='image/*' required='')
+            p#thumbnailFile-error.text-red-500.text-xs.mt-1.font-medium.hidden Required field
+          
+          button.w-full.py-4.text-white.font-bold.tracking-wider.text-lg.rounded-md.transition-all.uppercase.shadow-sm(type='submit' id='submitBtn' class='bg-[#FF0000] hover:bg-red-700 text-white hover:text-white')
+            | Upload
+
+    script.
+      const form = document.getElementById('uploadForm');
+      const videoInput = document.getElementById('videoFile');
+      const thumbInput = document.getElementById('thumbnailFile');
+      const videoBox = document.getElementById('videoBox');
+      const thumbBox = document.getElementById('thumbBox');
+      const submitBtn = document.getElementById('submitBtn');
+
+      function clearError(inputEl) {
+        inputEl.classList.remove('input-error');
+        const errorEl = document.getElementById(`${inputEl.id}-error`);
+        if (errorEl) errorEl.classList.add('hidden');
+      }
+
+      ['title', 'description', 'quality', 'publishDate'].forEach(id => {
+        document.getElementById(id).addEventListener('input', function() {
+          if (this.checkValidity()) clearError(this);
+        });
+      });
+
+      videoInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+          document.getElementById('video-label').innerText = this.files[0].name;
+          videoBox.classList.remove('box-error-border');
+          document.getElementById('videoFile-error').classList.add('hidden');
+        }
+      });
+
+      thumbInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+          document.getElementById('thumb-label').innerText = this.files[0].name;
+          thumbBox.classList.remove('box-error-border');
+          document.getElementById('thumbnailFile-error').classList.add('hidden');
+        }
+      });
+
+      form.addEventListener('submit', async function(event) {
+        event.preventDefault(); 
+        let isValid = true;
+
+        // 1. Text Fields Evaluation
+        const fields = ['title', 'description', 'quality', 'publishDate'];
+        fields.forEach(field => {
+          const input = document.getElementById(field);
+          const errorMsg = document.getElementById(`${field}-error`);
+          if (!input.checkValidity()) {
+            input.classList.add('input-error');
+            errorMsg.classList.remove('hidden');
+            isValid = false;
+          } else {
+            clearError(input);
+          }
+        });
+
+        if (!videoInput.files.length) {
+          videoBox.classList.add('box-error-border');
+          document.getElementById('videoFile-error').classList.remove('hidden');
+          isValid = false;
+        }
+
+        if (!thumbInput.files.length) {
+          thumbBox.classList.add('box-error-border');
+          document.getElementById('thumbnailFile-error').classList.remove('hidden');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        const formData = new FormData(form);
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Uploading...';
+
+        try {
+          const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+          });
+
+          if (response.redirected) {
+            window.location.href = response.url;
+          } else if (response.status === 400) {
+            videoBox.classList.add('box-error-border');
+            document.getElementById('videoFile-error').classList.remove('hidden');
+
+            thumbBox.classList.add('box-error-border');
+            document.getElementById('thumbnailFile-error').classList.remove('hidden');
+            
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Upload';
+          } else {
+            alert('An internal server error occurred.');
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Upload';
+          }
+        } catch (error) {
+          console.error(error);
+          submitBtn.disabled = false;
+          submitBtn.innerText = 'Upload';
+        }
+      });
